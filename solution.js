@@ -13,8 +13,8 @@ function formatFile(path) {
 }
 
 function trackTripletInstances(list, key) {
-  for (let i = 0; i < list.length - 3; i++) {
-    const triplet = `${list[i]} ${list[i + 1]} ${list[i + 2]}`;
+  for (let index = 0; index < list.length - 3; index++) {
+    const triplet = `${list[index]} ${list[index + 1]} ${list[index + 2]}`;
     if (!key[triplet]) key[triplet] = 0;
     key[triplet]++;
   }
@@ -23,7 +23,10 @@ function trackTripletInstances(list, key) {
 function findTopTriplets() {
   const key = {};
 
-  trackTripletInstances(formatFile(process.argv[2]), key);
+  process.argv.forEach((input, index) => {
+    if (index < 2) return;
+    else trackTripletInstances(formatFile(input), key);
+  });
 
   const sortedInstances = Object.entries(key).sort((a, b) => b[1] - a[1]);
   const topHundred = sortedInstances.slice(0, 100);
