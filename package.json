@@ -1,0 +1,11 @@
+{
+  "scripts": {
+    "test": "mocha",
+    "test:autorun": "nodemon --exec \"mocha\""
+  },
+  "dependencies": {
+    "chai": "^4.3.6",
+    "mocha": "^10.1.0",
+    "nodemon": "^2.0.20"
+  }
+}
