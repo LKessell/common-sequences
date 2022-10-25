@@ -23,16 +23,22 @@ function trackTripletInstances(list, key) {
 function findTopTriplets() {
   const key = {};
 
-  process.argv.forEach((input, index) => {
-    if (index < 2) return;
-    else trackTripletInstances(formatFile(input), key);
+  process.argv.forEach((path) => {
+    if (!path.includes(".txt")) return;
+    else trackTripletInstances(formatFile(path), key);
   });
 
   const sortedInstances = Object.entries(key).sort((a, b) => b[1] - a[1]);
   const topHundred = sortedInstances.slice(0, 100);
 
-  console.log(topHundred);
+  // console.log(topHundred);
   return topHundred;
 }
 
 findTopTriplets();
+
+module.exports = {
+  formatFile,
+  trackTripletInstances,
+  findTopTriplets,
+};
