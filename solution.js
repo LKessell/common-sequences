@@ -9,27 +9,25 @@ function formatFile(path) {
   const lowercased = punctuationless.toLowerCase();
   const singleSpaced = lowercased.replace(/  +/g, " ");
 
-  // console.log(singleSpaced.split(" ").slice(0, 50));
   return singleSpaced.split(" ");
-  // return singleSpaced.split(" ").slice(0, 5000);
 }
 
-function trackTripleInstances(list, key) {
+function trackTripletInstances(list, key) {
   for (let i = 0; i < list.length - 3; i++) {
-    const triple = `${list[i]} ${list[i + 1]} ${list[i + 2]}`;
-    if (!key[triple]) key[triple] = 0;
-    key[triple]++;
+    const triplet = `${list[i]} ${list[i + 1]} ${list[i + 2]}`;
+    if (!key[triplet]) key[triplet] = 0;
+    key[triplet]++;
   }
 }
 
 function findTopTriplets() {
   const key = {};
 
-  // formatFile(process.argv[2]);
-  trackTripleInstances(formatFile(process.argv[2]), key);
+  trackTripletInstances(formatFile(process.argv[2]), key);
 
   const sortedInstances = Object.entries(key).sort((a, b) => b[1] - a[1]);
   const topHundred = sortedInstances.slice(0, 100);
+
   console.log(topHundred);
   return topHundred;
 }
