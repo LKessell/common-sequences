@@ -10,8 +10,8 @@ function formatFile(path) {
   const singleSpaced = lowercased.replace(/  +/g, " ");
 
   // console.log(singleSpaced.split(" ").slice(0, 50));
-  // return singleSpaced.split(" ");
-  return singleSpaced.split(" ").slice(0, 50);
+  return singleSpaced.split(" ");
+  // return singleSpaced.split(" ").slice(0, 5000);
 }
 
 function trackTripleInstances(list, key) {
@@ -27,7 +27,11 @@ function findTopTriplets() {
 
   // formatFile(process.argv[2]);
   trackTripleInstances(formatFile(process.argv[2]), key);
-  console.log(key);
+
+  const sortedInstances = Object.entries(key).sort((a, b) => b[1] - a[1]);
+  const topHundred = sortedInstances.slice(0, 100);
+  console.log(topHundred);
+  return topHundred;
 }
 
 findTopTriplets();
