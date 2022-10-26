@@ -58,5 +58,36 @@ describe("solution.js", function () {
         "do not list": 1,
       });
     });
+
+    it("Should add to any pre-existing sequence instances in the key", function () {
+      const key = {
+        "i do not": 2,
+        "not this list": 1,
+        "testing is fun": 1,
+      };
+      const sampleList = [
+        "i",
+        "do",
+        "not",
+        "this",
+        "list",
+        "i",
+        "do",
+        "not",
+        "list",
+      ];
+
+      trackTripletInstances(sampleList, key);
+
+      assert.deepEqual(key, {
+        "i do not": 4,
+        "not this list": 2,
+        "testing is fun": 1,
+        "do not this": 1,
+        "this list i": 1,
+        "list i do": 1,
+        "do not list": 1,
+      });
+    });
   });
 });
