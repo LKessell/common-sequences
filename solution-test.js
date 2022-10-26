@@ -1,8 +1,6 @@
 var chai = require("chai");
 var assert = chai.assert;
 
-process.argv.push("test_data.txt");
-
 var {
   formatFile,
   trackTripletInstances,
@@ -107,6 +105,25 @@ describe("solution.js", function () {
       assert.deepEqual(solution, [
         "testing is fun - 2",
         "formatting is cool - 1",
+      ]);
+    });
+  });
+
+  describe("findTopTriplets", function () {
+    it("Should be a function", function () {
+      assert.isFunction(findTopTriplets);
+    });
+
+    it("Should take in a file path from the command line and output a list of the most common three word sequences", function () {
+      process.argv.push("test_data.txt");
+
+      const solution = findTopTriplets();
+
+      assert.deepEqual(solution, [
+        "this contains punctuation - 1",
+        "contains punctuation i - 1",
+        "punctuation i do - 1",
+        "i do not - 1",
       ]);
     });
   });
