@@ -6,6 +6,7 @@ process.argv.push("test_data.txt");
 var {
   formatFile,
   trackTripletInstances,
+  formatSolution,
   findTopTriplets,
 } = require("./solution");
 
@@ -88,6 +89,25 @@ describe("solution.js", function () {
         "list i do": 1,
         "do not list": 1,
       });
+    });
+  });
+
+  describe("formatSolution", function () {
+    it("Should be a function", function () {
+      assert.isFunction(formatSolution);
+    });
+
+    it("Should take in a list of entries, and output the list in an Entry - Number format", function () {
+      const entries = [
+        ["testing is fun", 2],
+        ["formatting is cool", 1],
+      ];
+      const solution = formatSolution(entries);
+
+      assert.deepEqual(solution, [
+        "testing is fun - 2",
+        "formatting is cool - 1",
+      ]);
     });
   });
 });
