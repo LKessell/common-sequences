@@ -10,3 +10,4 @@
 ### Testing
 
 - To test, run `npm test solution-test.js`
+- The console log on line 41 of `solution.js` can be commented out for better test legibility
