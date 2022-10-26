@@ -139,5 +139,14 @@ describe("solution.js", function () {
         "i do not - 2",
       ]);
     });
+
+    it("Should limit the list to the top 100 most common sequences", function () {
+      process.argv.push("pride_and_prejudice.txt");
+
+      const solution = findTopTriplets();
+
+      assert.equal(solution.length, 100);
+      assert.equal(solution[0], "i do not - 63");
+    });
   });
 });
