@@ -20,6 +20,10 @@ function trackTripletInstances(list, key) {
   }
 }
 
+function formatSolution(list) {
+  return list.map((entry) => `${entry[0]} - ${entry[1]}`);
+}
+
 function findTopTriplets() {
   const key = {};
 
@@ -31,8 +35,8 @@ function findTopTriplets() {
   const sortedInstances = Object.entries(key).sort((a, b) => b[1] - a[1]);
   const topHundred = sortedInstances.slice(0, 100);
 
-  // console.log(topHundred);
-  return topHundred;
+  console.log(formatSolution(topHundred));
+  return formatSolution(topHundred);
 }
 
 findTopTriplets();
@@ -40,5 +44,6 @@ findTopTriplets();
 module.exports = {
   formatFile,
   trackTripletInstances,
+  formatSolution,
   findTopTriplets,
 };
