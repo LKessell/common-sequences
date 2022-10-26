@@ -126,5 +126,18 @@ describe("solution.js", function () {
         "i do not - 1",
       ]);
     });
+
+    it("Should be able to create a list from more than one file path", function () {
+      process.argv.push("test_data.txt");
+
+      const solution = findTopTriplets();
+
+      assert.deepEqual(solution, [
+        "this contains punctuation - 2",
+        "contains punctuation i - 2",
+        "punctuation i do - 2",
+        "i do not - 2",
+      ]);
+    });
   });
 });
