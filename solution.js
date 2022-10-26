@@ -13,7 +13,7 @@ function formatFile(path) {
 }
 
 function trackTripletInstances(list, key) {
-  for (let index = 0; index < list.length - 3; index++) {
+  for (let index = 0; index <= list.length - 3; index++) {
     const triplet = `${list[index]} ${list[index + 1]} ${list[index + 2]}`;
     if (!key[triplet]) key[triplet] = 0;
     key[triplet]++;
